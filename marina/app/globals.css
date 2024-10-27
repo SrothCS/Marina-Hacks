@@ -118,4 +118,5 @@ video {
   height: 200px;
   border: white solid 2px;
   background-color: white;
+  overflow: hidden;
 }

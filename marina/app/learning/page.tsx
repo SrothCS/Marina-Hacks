@@ -51,8 +51,8 @@ const CamScreen: React.FC = () => {
             if (context) {
                 context.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height); // Draw the video frame to the canvas
                 const imageSrc = canvas.toDataURL('image/jpeg'); // Base 64 string
-                const base64Data = imageSrc.replace(/^data:image\/jpeg;base64,/, "");
-                return base64Data;
+                // const base64Data = imageSrc.replace(/^data:image\/jpeg;base64,/, "");
+                return imageSrc;
             }
         }
     };
@@ -67,11 +67,11 @@ const CamScreen: React.FC = () => {
         });
         async function main() {
             const response = await openai.chat.completions.create({
-                model: "gpt-4o", // Ensure the model name is correct.
+                model: "gpt-4o",
                 messages: [
                     {
                         role: "user",
-                        content: "Give a description of the picture", // The text prompt
+                        content: "Translate from ASL to English from the picture", // The text prompt
                     },
                     {
                         role: "user",
