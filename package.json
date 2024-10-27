@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@react-three/fiber": "^8.17.10",
+    "@splinetool/react-spline": "^4.0.0",
+    "react-webcam": "^7.2.0",
+    "three": "^0.169.0"
+  }
+}
