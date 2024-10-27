@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --background: #1e1e1e;
-  /* --foreground: white; */
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #312e81, #6b21a8);
 }
 
 body {
@@ -80,4 +80,42 @@ body {
 
 .songButton:active {
   background-color: black;
+}
+
+video {
+  margin: auto;
+  margin-top: 50px;
+  border-radius: 10px;
+  -moz-box-shadow: 0 0 3px #ccc;
+  -webkit-box-shadow: 0 0 3px #ccc;
+  box-shadow: 0 0 3px #ccc;
+}
+
+#captureButton {
+  display: block;
+  margin: auto;
+  margin-top: 30px;
+  padding: 1rem 2.5rem;
+  background-color: #6b46c1;
+  color: white;
+  border-radius: 0.75rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#captureButton:hover {
+  background-color: #553c9a;
+  transform: scale(1.05);
+  box-shadow: 0px 4px 12px rgba(128, 90, 213, 0.25);
+}
+
+.textBox {
+  margin: auto;
+  margin-top: 20px;
+  width: 500px;
+  height: 200px;
+  border: white solid 2px;
+  background-color: white;
 }

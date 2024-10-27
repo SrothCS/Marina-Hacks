@@ -1,9 +1,12 @@
 "use client"
 import React, { useRef, useState, useEffect } from 'react';
 import OpenAI from "openai";
-
+import fs from 'fs'
 
 const CamScreen: React.FC = () => {
+
+    const [responseText, setResponseText] = useState("");
+
     const videoRef = useRef<HTMLVideoElement>(null);
     const [mediaStream, setMediaStream] = useState<MediaStream | null>(null);
     const [capturedImage, setCapturedImage] = useState<string | null>(null);
@@ -44,13 +47,16 @@ const CamScreen: React.FC = () => {
             canvas.width = videoRef.current.videoWidth; // Get the width of the video
             canvas.height = videoRef.current.videoHeight; // Get the height of the video
             const context = canvas.getContext('2d');
+
             if (context) {
                 context.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height); // Draw the video frame to the canvas
                 const imageSrc = canvas.toDataURL('image/jpeg'); // Base 64 string
-                return imageSrc;
+                const base64Data = imageSrc.replace(/^data:image\/jpeg;base64,/, "");
+                return base64Data;
             }
         }
     };
+
 
     const handleCaptureClick = () => {
         const image = captureImage(); // Call captureImage and store its return value
@@ -65,7 +71,7 @@ const CamScreen: React.FC = () => {
                 messages: [
                     {
                         role: "user",
-                        content: "What is the person saying in asl?", // The text prompt
+                        content: "Give a description of the picture", // The text prompt
                     },
                     {
                         role: "user",
@@ -75,7 +81,7 @@ const CamScreen: React.FC = () => {
             });
 
 
-            console.log(response.choices[0]);
+            setResponseText(response.choices[0].message.content);
         }
         main();
     };
@@ -83,13 +89,10 @@ const CamScreen: React.FC = () => {
     return (
         <div>
             <video ref={videoRef} autoPlay={true} />
-            <button onClick={handleCaptureClick}>Capture Image</button>
-            {capturedImage && (
-                <div>
-                    <h2>Captured Image:</h2>
-                    <img src={capturedImage} alt="Captured" />
-                </div>
-            )}
+            <button id='captureButton' onClick={handleCaptureClick}>Capture Image</button>
+            <div className='textBox'>
+                <p>{responseText}</p>
+            </div>
         </div>
     );
 };
