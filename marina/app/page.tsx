@@ -29,14 +29,14 @@ const ASLLandingPage = () => {
 
         {/* Buttons Container */}
         <div className="flex gap-8 z-10">
-          <button 
+          <button
             onClick={() => router.push('/learning')}
             className="px-10 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-xl text-lg font-semibold transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-purple-500/25"
           >
             Start Learning
           </button>
 
-          <button 
+          <button
             onClick={() => router.push('/practice')}
             className="px-10 py-4 bg-transparent border-2 border-purple-400 text-purple-200 hover:bg-purple-800/30 rounded-xl text-lg font-semibold transform hover:scale-105 transition-all duration-200"
           >

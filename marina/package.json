@@ -13,6 +13,7 @@
     "@splinetool/react-spline": "^4.0.0",
     "@splinetool/runtime": "^1.9.35",
     "@tensorflow/tfjs": "^4.22.0",
+    "axios": "^1.7.7",
     "next": "15.0.1",
     "openai": "^4.68.4",
     "react": "19.0.0-rc-69d4b800-20241021",
